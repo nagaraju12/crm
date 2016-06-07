@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  layout :layout?, only: [:index,:new,:reset_password,:change_password]
- before_filter :authenticate_user!, :only => ['index','reset_password','new','change_password']
+ #before_filter :authenticate_user!, :only => ['index','reset_password','new','change_password']
 
   def index
     @approved_users = User.all.select {|user| user.approved}
