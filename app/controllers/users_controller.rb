@@ -9,6 +9,8 @@ class UsersController < ApplicationController
       #@pending_users= User.where("parent_id = #{current_user.id}")
 end
 
+
+
  def new
     @user = User.new
     1.times{@user.images.build}
