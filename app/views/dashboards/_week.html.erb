@@ -1,0 +1,43 @@
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+      Highcharts.setOptions({
+          colors: ['#4897F1', '#000'],
+          global: {
+              useUTC: false
+          }
+      });
+      $('#canvas').highcharts({
+          chart: {
+              type: 'column'
+          },
+          title: {
+              text: ""
+          },
+          xAxis: {
+              type: "datetime"
+          },
+          yAxis: {
+              min: 0,
+              title: {
+                  text: "INR"
+              }
+          },
+          tooltip: {
+              formatter: function () {
+                  return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' +
+                          "$" + Highcharts.numberFormat(this.y, 2);
+              }
+          },
+          series: [
+<% { "Sales" => User.where("status = #{true}")}.each do |name, users| %>
+                {
+                    name: "<%= name %>",
+                    pointInterval: <%= 1.day * 1000 %>,
+                    pointStart: <%= (params[:from_date] ? (params[:from_date].to_date.beginning_of_day.to_i * 1000) : (params[:week] == '6m' ? (6.months.ago.to_i * 1000) : (params[:week] == '1m' ? (1.month.ago.to_i * 1000) : (params[:week] == '1y' ? (1.year.ago.to_i * 1000) : (1.week.ago.to_i * 1000))))) %>,
+                    data: <%#= (params[:from_date] ? ("#{users_chart_series(users, (params[:from_date].to_date), (params[:to_date].to_date))}") : (params[:week] == '6m' ? ("#{users_chart_series(users, 6.months.ago, Time.zone.now)}") : (params[:week] == '1m' ? ("#{users_chart_series(users, 1.month.ago, Time.zone.now)}") : (params[:week] == '1y' ? ("#{users_chart_series(users, 1.year.ago, Time.zone.now)}") : ("#{users_chart_series(users, 1.week.ago, Time.zone.now)}"))))) %>
+                },
+<% end %>
+          ]
+      });
+  });
+</script>

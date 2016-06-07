@@ -1,0 +1,147 @@
+<div class="text-right">
+<h4><%= link_to "+CreateUser", new_user_path,class: "btn btn-success" %></h4>
+
+<%#= button_to "Back" , dashboards_index_path, :method => "get" %>
+</div>
+
+
+
+<div class="well">
+  <table class="table table-bordered table-striped pending-users">
+    <h3>
+      Pending Users
+    </h3>
+    <thead>
+      <tr>
+      <th>
+      Sr. No
+      </th>
+   
+      
+      <th>
+      Photo
+      </th>
+            <th>
+      CustomerName
+      </th>
+        <th>
+          Email
+        </th>
+            <th>
+      CustomerContact
+      </th>
+        <th>
+          Approved
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pending_users.each_with_index do |user,index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+ 
+               <td><%= link_to (image_tag(user.images.present? ? user.images.first.image.url : "/assets/defalt.jpg", :height => 60, :width =>60)), users_path(user.id)  %>
+         </td>
+           <td>
+            <%= user.username %>
+          </td> 
+          <td>
+            <%= user.email %>
+          </td>
+             <td>
+            <%= user.phone %>
+          </td> 
+          <td>
+            <%= user.approved %>
+          </td>
+          
+          <td>
+            <%= link_to "Approve", approve_user_path(user), class: 'btn btn-mini btn-primary' %>
+           <%= link_to "Delete", user, confirm: "Are you sure you want to delete: #{user.email} ?", method: :delete, class: 'btn btn-mini btn-danger' %>
+         
+
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="well">
+  <table class="table table-bordered table-striped approved-users">
+    <h3>
+      Approved Users
+    </h3>
+    <thead>
+      <tr>
+       <th>
+      Sr. No
+      </th>
+        <th>
+      Photo
+      </th>
+           <th>
+      CustomerName
+      </th>
+        <th>
+          Email
+        </th>
+             <th>
+      CustomerContact
+      </th>
+    
+      
+       
+        <th>
+          Approved
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+ 
+      <% @approved_users.each_with_index  do |user,index| %>
+
+        <tr>
+        
+          <td><%= index + 1 %></td>
+              <td><%= link_to (image_tag(user.images.present? ? user.images.first.image.url : "/assets/defalt.jpg", :height => 60, :width =>60)), users_path(user.id)  %>
+     </td>
+     <td>
+            <%= user.username %>
+          </td> 
+   <td>
+            <%= user.email %>
+          </td>
+            <td>
+            <%= user.phone %>
+          </td>
+ 
+       
+        
+          <td>
+            <%= user.approved %>
+          </td>
+          <td>
+            <%= link_to "Delete", user, confirm: "Are you sure you want to delete: #{user.email} ?", method: :delete, class: 'btn btn-mini btn-primary' %>
+            <%= link_to 'Password Reset', change_password_user_path(user), class: 'btn btn-info' %>
+            <%= user.date_of_visit %> 
+          </td>
+        </tr>
+      <% end %>
+   
+
+    </tbody>
+  </table>
+</div>
+
+
+<style>
+   div.text-right{
+     float: right;
+}
+</style>

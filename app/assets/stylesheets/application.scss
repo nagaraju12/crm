@@ -1,0 +1,121 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require bootstrap-datepicker
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+*{
+    margin: 12;
+    padding: 15;
+}
+
+#nav {
+    background: none repeat scroll 0 0 #006699;
+    float: left;
+    height: 89px;
+    width: 100%;
+}
+.notice:empty {
+  display: none;
+}
+#page_nav a, #sign_in a {
+    color: #fff;
+    line-height: 80px;
+    padding: 0px 1px 0 24px;
+    text-decoration: none;
+}
+#element {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 346px;
+}
+#page_nav{
+    margin:0 0 0 5%;
+    float: left;
+}
+
+#sign_in{
+    float: right;
+    margin:0 5% 0 0;
+}
+
+#main_wrap{
+    width: 90%;
+    float: left;
+    margin: 20px 5% 0 5%;
+}
+
+.form-control {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 29%;
+}
+
+
+.btn {
+    -moz-user-select: none;
+    background-image: none;
+    border: 2px solid transparent;
+    border-radius: 1px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.bx-wrapper {
+    background: none repeat scroll 0 0 #fff;
+    border: 5px dashed #fff;
+    box-shadow: 0 8px 24px #00FFFF;
+}
+
+
+
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }

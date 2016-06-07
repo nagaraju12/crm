@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>crm</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav id ="nav">
+ </div> 
+
+<div id= "page_nav" >
+<%= link_to image_tag("crm final.png", alt: "File Name Fancy", size: "2170*2170"), "#" %>
+
+     </div>
+                     
+<div id= "sign_in" >
+<%=link_to current_user.role,  "#"%>
+
+<%= link_to ('<span class="glyphicon glyphicon-off"></span>').html_safe, destroy_user_session_path, :method => :delete %>
+
+
+
+</div>
+</nav>
+
+<div id= "main_wrap" >
+ <div class="onlinesticker-container onlinesticker-border">
+
+
+
+
+<div class="row">
+<h4><p class="notice"><%= notice %></p></h4>
+<p><%#= render 'stickers/search' %></p>
+  <div class="col-md-2"</div>
+  <li>
+    <h5><%= link_to 'DashboardManagement', dashboards_index_path,class:"glyphicon glyphicon-blackboard" %></h5>
+<h5><%= link_to "UserManagement" ,users_path,class:"glyphicon glyphicon-user"  %></h5>       
+
+<h5><%= link_to "annerManagement" , dashboards_index_path,class:"glyphicon glyphicon-bitcoin" %></h5> 
+
+<h5><%= link_to "ContactRequest" , dashboards_index_path,class:"
+glyphicon glyphicon-earphone" %></h5>
+
+<h5><%= link_to "OrderManagement" , dashboards_index_path,class:"glyphicon glyphicon-folder-open" %></h5>
+
+</div>
+</li>
+</li>
+  <div class="row">
+
+  <div class="col-md-9"</div>
+
+<%= yield %>
+
+</div>
+</div>
+
+ <div id="sticker_all"></div>
+
+<div id= "footer" >
+
+
+ 
+</footer>
+
+</body>
+</html>
+</div>
+
+<style>
+body {
+    margin: 2px;
+       width:100%;
+           height: 2%;
+}
+#nav {
+    background: none repeat scroll 0 0 gray;
+    float: right;
+    height: 108px;
+    width: 100%;
+}
+li {
+    background-color: gray;
+    height: 100%;
+    list-style-type: none;
+    margin: -61px;
+    overflow: auto;
+    padding: 1px;
+    position: fixed;
+}
+
+li a {
+    color: white;
+    display: block;
+    padding: 18px 5px 5px 25px;
+    text-decoration: none;
+}
+h5 {
+    background-color: gray;
+    color: white;
+    padding: -3 -5 14px;
+}
+h5, .h5 {
+    font-size: 15px;
+}
+li :hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+</style>
+
+
+

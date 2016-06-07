@@ -1,0 +1,86 @@
+<div class="col-md-5 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<%= f.label :email %><br/>
+  <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+          <%= f.email_field :email, placeholder: "Email", class: "form-control input-lg", label: false, :required =>true %>
+        </div><br/>
+
+        <%= f.label :password%><br/>
+  <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-hand-right"></span>
+          <%= f.password_field :password, placeholder: "Password", class: "form-control input-lg", label: false, :required =>true %>
+        </div><br/>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <%= f.submit "Log in",class: "btn btn-primary"%>
+    <% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+
+<!-- <li>
+<h4>NEW CUSTOMERS</h4>
+<p class="one">By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more. </p>
+<p class="one"><%= link_to "Create an account",  new_user_registration_path(:role => "user"),class: "btn btn-primary"%></p>
+</li>
+ -->
+
+<style>
+body {
+    margin: 0;
+}
+li {
+    list-style-type: none;
+    margin: 0;
+    padding: 10;
+    width: 45%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 57%;
+    overflow: auto;
+}
+h2 {
+    text-shadow: 2px 2px 5px black;
+  }
+h5 {
+    background-color: #4CAF50;
+     padding: 10px 0 8px 16px;
+    color: white;
+}
+h4 {
+  
+    text-shadow: 2px 2px 5px red;
+    padding-top: 80px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    padding-left: 80px;
+}
+p.one {
+    
+    padding-top: 0px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    padding-left: 80px;
+}
+p.tow {
+    
+    padding-top: 0px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    padding-left: 200px;
+}
+</style>

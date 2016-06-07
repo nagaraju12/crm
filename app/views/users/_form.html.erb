@@ -1,0 +1,88 @@
+<div class="col-md-18 col-md-offset-1">
+<%= nested_form_for @user,:url => users_path, :html => {:method => 'POST'}  do |f| %>
+<%#= f.hidden_field :status ,:value => params[:status] %>
+
+  <% if @user.errors.any? %>
+
+    <div id="error_explanation">
+
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+
+      </ul>
+    </div>
+  <% end %>
+
+    <%#= f.label :category_id %>
+    <%#= f.collection_select :category_id, Category.all, :id, :address %>
+
+<% if !@user.new_record? %>
+<% @user.images.each do |i| %>
+<%= image_tag(i.image.url, :height => 50, :width =>80 ) %>
+<% end %>
+<% end %>
+<p>
+
+
+<%= f.label :DateofVisit  %><br/>
+    <div class="form-group">
+       <%= f.text_field :date_of_visit,:class=>'datepicker' %>  
+    </div>
+    </p>
+<p>
+    
+    <%= f.radio_button :role, 'super_admin' %>SuperAdmin 
+    <%= f.radio_button :role, 'Admin' %> Admin
+    <%= f.radio_button :role, 'User' %> User
+</p>
+ 
+  <%= f.label :Username %><br/>
+    <div class="form-group">
+        <%=  f.text_field :username, placeholder: "name", class: "form-control input-lg", label: false %>
+    </div>
+
+
+  <%= f.label :Email %><br/>
+    <div class="form-group">
+        <%=  f.email_field :email, placeholder: "example@gmail.com", class: "form-control input-lg", label: false %>
+    </div>
+
+  <%= f.label :Password %><br/>
+    <div class="form-group">
+        <%=  f.password_field :password, placeholder: "", class: "form-control input-lg", label: false %>
+    </div>
+
+  <%= f.label :PasswordConfirmation %><br/>
+    <div class="form-group">
+        <%=  f.password_field :password_confirmation, placeholder: "", class: "form-control input-lg", label: false %>
+    </div>
+
+ <div class='field'>
+<%= f.fields_for :images do |image| %>
+  <td><%= image.file_field :image %></td>
+  <p><%= image.link_to_remove "Remove image" %></p>
+<% end %>
+<p><%= f.link_to_add "Add a image", :images %></p>
+</div>
+ <%= f.label :phone %><br/>
+    <div class="form-group">
+        <%= f.phone_field :phone, placeholder: "000000000", class: "form-control input-lg", label: false, :uniqueness_of => true, :required =>true %>
+    </div>
+ <%= f.label :address %><br/>
+    <div class="form-group">
+        <%= f.text_area :address, placeholder: "Address", class: "form-control input-lg", label: false, :uniqueness_of => true, :required =>true %>
+    </div>
+
+   <%= f.submit "Create ",class: "btn btn-success"%>
+
+    <% end %></div>
+    <script >
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
+</script>

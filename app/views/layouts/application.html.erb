@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>crm</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <nav id ="nav">
+
+ </div> 
+
+<div id= "page_nav" >
+<p><%= render 'layouts/heder' %></p>
+     </div>
+             
+<div id= "sign_in" >
+
+<% if current_user.present? %>
+
+ <%=link_to current_user.role,"#",class:"glyphicon glyphicon-user" %>
+
+<%= link_to ('<span class="glyphicon glyphicon-off"></span>').html_safe, destroy_user_session_path, :method => :delete %>
+
+<% else %>
+
+<%= link_to ('<span class="glyphicon glyphicon-user"> </span> Sign in ' ).html_safe, new_user_session_path(current_user)  %>
+
+
+<% end %>
+</div>
+</nav>
+
+
+
+
+<div id= "main_wrap" >
+
+
+
+
+<%= yield %>
+
+</div>
+</div>
+
+ <div id="sticker_all"></div>
+
+<div id= "footer" >
+
+
+<p><%#= render 'layouts/footer' %></p>
+ 
+</footer>
+
+</body>
+</html>
+<style>
+#dropdown
+  {
+    left: -130px;
+    margin-top: -45px;
+    position: relative;
+    top: 45px;
+    width: 102px;
+  }
+.center
+  {
+    display:inline-block;
+    padding: 2px 55px;
+    margin: 65px;
+  }
+</style>
