@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
  def layout?
 if current_user && (current_user.role == 'super_admin' )
 "superadmin"
-elsif  current_user && (current_user.role == 'Admin' )
+elsif  current_user && (current_user.role == 'admin' )
 "admin"
 else
 "application"
@@ -32,7 +32,7 @@ def after_sign_in_path_for(resource_or_scope)
       #flash[:success] = "You have successfully logged in."
       if current_user.role == 'super_admin'
           dashboards_index_path()
-      elsif current_user.role == 'Admin'
+      elsif current_user.role == 'admin'
         welcome_index_path()
        else
          root_path()
