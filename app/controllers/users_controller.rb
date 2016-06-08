@@ -32,19 +32,19 @@ end
     
     @user.update_attributes(approved: true)
     if @user.save
-      redirect_to :back, flash: { notice: 'User has successfully been appproved'}
+      redirect_to users_path, flash: { notice: 'User has successfully been appproved'}
       UserMailer.notify_approval(@user).deliver!
     else
-      redirect_to :back, flash: { notice: 'Unable to approve user'}
+      redirect_to users_path, flash: { notice: 'Unable to approve user'}
     end
   end
 
   def destroy
     @user = User.find params[:id]
     if @user.destroy
-      redirect_to :back, flash: { notice: 'User has successfully been deleted'}
+      redirect_to users_path, flash: { notice: 'User has successfully been deleted'}
     else
-      redirect_to :back, flash: { notice: 'Unable to delete user'}
+      redirect_to users_path, flash: { notice: 'Unable to delete user'}
     end 
   end
 
