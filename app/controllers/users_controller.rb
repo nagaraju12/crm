@@ -20,7 +20,7 @@ end
     @user = User.new(new_params.merge(parent_id: current_user.id))
   1.times{@user.images.build} if @user.images.blank?
     if @user.save
-         UserMailer.welcome_email(@user).deliver!
+         UserMailer.welcome_email(@user).deliver
       redirect_to users_path
     else
       render :action => 'new'
@@ -33,7 +33,7 @@ end
     @user.update_attributes(approved: true)
     if @user.save
       redirect_to users_path, flash: { notice: 'User has successfully been appproved'}
-      UserMailer.notify_approval(@user).deliver!
+      UserMailer.notify_approval(@user).deliver
     else
       redirect_to users_path, flash: { notice: 'Unable to approve user'}
     end
