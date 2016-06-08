@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
 
   def notify_approval(user)
     @user = user
-   @url  = 'http://railscrms.herokuapp.com/#'
+    @url  = 'http://railscrms.herokuapp.com/#'
     mail(to: @user.email, subject: 'RailsCRM Approval')
   end
 end
